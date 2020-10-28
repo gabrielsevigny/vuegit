@@ -8,11 +8,13 @@ jobs:
     - uses: actions/checkout@v2.1.0
       with:
         fetch-depth: 2
-    - run: npm install
-    - run: npm run build 
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         ftp-server: ftp://gabrielsevigny.com/public_html/vuegit/
         ftp-username: ${{ secrets.FTP_USER }}
         ftp-password: ${{ secrets.FTP_PWD }}
+    - name: Install packages
+      run: npm install
+    - name: run build
+      run: npm run build
