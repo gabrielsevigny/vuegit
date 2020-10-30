@@ -14,9 +14,8 @@ jobs:
         ftp-server: ftp://gabrielsevigny.com/public_html/vuegit/
         ftp-username: ${{ secrets.FTP_USER }}
         ftp-password: ${{ secrets.FTP_PWD }}
-    - name: Install packages
-      working-directory: wp-content/themes/angelik/
-      run: npm install
-    - name: run build
-      working-directory: wp-content/themes/angelik/
-      run: npm run build
+    - name: find directory
+      uses: ./wp-content/themes/angelik/
+      with:
+        install: npm install
+        build: npm run build
